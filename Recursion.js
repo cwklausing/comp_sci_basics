@@ -70,7 +70,6 @@ writeFib(20);
  */
 function factorial(num) {
   if(num > 1) {
-    wr(`${num} plus`);
     return num * factorial(num-1)
   }
   else {
@@ -94,5 +93,14 @@ describe('fibonacci', function() {
     expect(fibonacci(4)).toEqual(3);
     expect(fibonacci(5)).toEqual(5);
     expect(fibonacci(10)).toEqual(55);
+  });
+});
+
+describe('factorial', function(){
+  it('should multiply n!', function() {
+    expect(factorial(3)).toEqual(6);
+    expect(factorial(4)).toEqual(24);
+    expect(factorial(5)).toEqual(120);
+    expect(factorial(10)).toEqual(3628800);
   });
 });
