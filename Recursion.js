@@ -1,20 +1,23 @@
 let wr = (msg='------------') => document.write(`<br>${msg}`);
 
 let functionCalls = 0;
+function incrementFuncCalls(){
+  functionCalls++;
+}
 
 function basicRecursion(max, current) {
   if (current > max) return;
   wr(current);
   basicRecursion(max, current+1);
 }
-
+//Basic recursion print
 wr('Basic Recursion')
 basicRecursion(5,1);
 wr()
+//Next section
 wr('Fibonacci Sequence');
-
 function fibonacci(n) {
-  functionCalls++;
+  incrementFuncCalls();
   if(n <= 2) {
     return 1;
   }
