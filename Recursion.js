@@ -82,11 +82,23 @@ factorialFive = factorial(5);
 wr(`Factorial 5: ${factorialFive}`);
 
 
+//Bubble sort:
+//Goes through list, swaps them if they're out of order.
+//If something was swapped in the previous run through program,
+//Run the bubble sort again.
+//Because there's an outer loop and an inner loop, the big O is n^2
+const bubbleSort = (nums) => {
+  let swapped = false;
+  while(swapped) {
+
+  }
+}
+
 
 /**
  * Jasmin Tests
  */
-describe('fibonacci', function() {
+describe('fibonacci', () => {
   it('should add from 1 n times according to the fibonacci sequence', () => {
     expect(fibonacci(2)).toEqual(1);
     expect(fibonacci(3)).toEqual(2);
@@ -96,7 +108,7 @@ describe('fibonacci', function() {
   });
 });
 
-describe('factorial', function(){
+describe('factorial', () => {
   it('should multiply n!', function() {
     expect(factorial(3)).toEqual(6);
     expect(factorial(4)).toEqual(24);
@@ -104,3 +116,12 @@ describe('factorial', function(){
     expect(factorial(10)).toEqual(3628800);
   });
 });
+
+xdescribe('bubble sort', () => {
+  it('should sort an array correctly', () => {
+    var nums = [10,5,3,8,2,6,4,7,9,1];
+    bubbleSort(nums);
+    expect(nums).toEqual([1,2,3,4,5,6,7,8,9,10]);
+    done();
+  })
+})
