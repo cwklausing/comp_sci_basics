@@ -136,7 +136,28 @@ const insertionSort = (nums) => {
 
 //Brian: "Bubble sort is never useful, insertion sort is occasionally useful, but mostly what you're going
 //to use is Merge Sort". If you use array.sort, most of the time what's happening under the hood is a
-//merge sort. Our first "divide and conquer" sort function.
+//merge sort. Our first "divide and conquer" sort function. Also a "stable sort", with a
+//Big O of o(n log n).
+
+/**
+ *
+ * @param nums
+ */
+const mergeSort = (nums) => {
+  if (nums.length < 2) {
+    return nums;
+  }
+
+  const length = nums.length;
+  const middle = Math.floor(length / 2);
+  const left = nums.slice(0, middle);
+  const right = nums.slice(middle, length);
+
+  const sortedLeft = mergeSort(left);
+  const sortedRight = mergeSort(right);
+
+  return stitch(mergeSort(sortedLeft), mergeSort(sortedRight));
+}
 
 
 
@@ -174,6 +195,14 @@ describe('insertion sort', () => {
   it('should sort an array correctly', () => {
     var nums = [10,5,3,8,2,6,4,7,9,1];
     insertionSort(nums);
+    expect(nums).toEqual([1,2,3,4,5,6,7,8,9,10]);
+  })
+});
+
+xdescribe('merge sort', () => {
+  it('should sort an array correctly', () => {
+    var nums = [10,5,3,8,2,6,4,7,9,1];
+    mergeSort(nums);
     expect(nums).toEqual([1,2,3,4,5,6,7,8,9,10]);
   })
 });
