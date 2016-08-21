@@ -133,6 +133,13 @@ const insertionSort = (nums) => {
     }
   }
 }
+
+//Brian: "Bubble sort is never useful, insertion sort is occasionally useful, but mostly what you're going
+//to use is Merge Sort". If you use array.sort, most of the time what's happening under the hood is a
+//merge sort. Our first "divide and conquer" sort function.
+
+
+
 /**
  * Jasmin Tests
  */
