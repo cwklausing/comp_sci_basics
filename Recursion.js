@@ -117,6 +117,12 @@ const bubbleSort = (nums) => {
 //So instead, we do an "insertion sort": Start with an array of one number, than add numbers into
 //the new array in correct orders.
 
+/**
+ * insertionSort takes in array nums and creates new 'spliced' array of sorted numbers, then
+ * inserts new numbers into this sorted array.
+ * Big O is slightly better than bubble sort, but only marginally and in some situations.
+ * @param nums
+ */
 const insertionSort = (nums) => {
   for (let i = 1; i < nums.length; i++) {
     for (let j = 0; j < i; j++) {
