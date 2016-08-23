@@ -16,7 +16,6 @@ const bubbleSort = (nums) => {
     do {
         swapped = false;
         for (let i = 0; i < nums.length; i++) {
-            console.log(nums);
             //if the element is larger than the element after it...
             if (nums[i] > nums[i+1]) {
                 //swap the two values in the array
@@ -27,8 +26,7 @@ const bubbleSort = (nums) => {
             }
         }
     }
-    while(swapped) {
-    }
+    while(swapped);
 }
 
 //However, bubble sort is extremely inefficient, because it continues to compare values that we already know
@@ -75,8 +73,8 @@ const mergeSort = (nums) => {
     const sortedLeft = mergeSort(left);
     const sortedRight = mergeSort(right);
 
-    return stitch(mergeSort(sortedLeft), mergeSort(sortedRight));
-}
+    return stitch(sortedLeft, sortedRight);
+};
 
 /**
  * Stitches the split arrays from mergeSort back together in order.
@@ -93,6 +91,16 @@ const stitch = (left, right) => {
             results.push(right.shift());
         }
     }
+
+    //Deal with any leftover items it array
+    while(left.length) {
+        results.push(left.shift());
+    }
+    while(right.length) {
+        results.push(right.shift());
+    }
+
+    return results;
 };
 
 /**
