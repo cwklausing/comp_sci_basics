@@ -112,12 +112,44 @@ const stitch = (left, right) => {
  * The solution: use a derivative of the 'stitch' algorithm, and return the middle
  * element (or the mean of the two middle elements).
  *
+ * Also--although the function uses pop() and shift(), it maintains the original
+ * state of the arrays.
+ *
  * @param left
  * @param right
  */
-const findMedian = (left, right) => {
+const findMedian = (first, second) => {
+    //Transfer arrays to new arrays
+    let left = first.slice();
+    let right = second.slice();
 
-}
+
+    let arrayLength = left.length + right.length;
+    let middle = Math.floor(arrayLength/2) + 1;
+    let even = (arrayLength%2 === 0);
+    let sorted = [];
+    let ans = undefined;
+
+    for(var i = 0; i < middle; i++) {
+        if(left[0] <= right[0]) {
+            sorted.push(left.shift());
+        }
+        else {
+            sorted.push(right.shift());
+        }
+    }
+
+    if(even) {
+        ans = ((sorted.pop() + sorted.pop()) / 2);
+    }
+    else {
+        ans = sorted.pop();
+    }
+    return ans;
+};
+
+//findMedian([1,3,5],[2,4,6]);
+//findMedian([1,3,5],[2,4,6,8]);
 
 /**
  * Jasmine Tests
@@ -149,12 +181,14 @@ describe('merge sort', () => {
 
 describe('find median', () => {
     it('should give the median of two sorted arrays', () => {
-        let firstArray = [1, 4, 6, 8, 9, 11];
-        let secondArray = [2, 4, 10, 12];
-        let thirdArray = [3, 5, 6, 7, 8, 13 ,14];
+        let firstArray = [1, 3, 5];
+        let secondArray = [2, 4, 6];
+        let thirdArray = [3, 4, 5, 6];
         let ans = findMedian(firstArray, secondArray);
         let ans2 = findMedian(secondArray, thirdArray);
-        expect(ans).toEqual(7);
-        expect(ans2).toEqual(6);
+        let ans3 = findMedian(firstArray, thirdArray);
+        expect(ans).toEqual(3.5);
+        expect(ans2).toEqual(4);
+        expect(ans3).toEqual(4);
     })
-})
+});
