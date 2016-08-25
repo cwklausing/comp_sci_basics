@@ -148,8 +148,19 @@ const findMedian = (first, second) => {
     return ans;
 };
 
-//findMedian([1,3,5],[2,4,6]);
-//findMedian([1,3,5],[2,4,6,8]);
+
+//Quicksort: Picks a pivot point, then sorts into two lists based on
+//whether number is greater or smaller than the pivot number. Then
+//sort those smaller lists (using another pivot?)
+
+/**
+ * Quick sort function
+ * @param left
+ * @param right
+ */
+const quickSort = (left, right) => {
+
+}
 
 /**
  * Jasmine Tests
@@ -175,6 +186,14 @@ describe('merge sort', () => {
     it('should sort an array correctly', () => {
         let nums = [10,5,3,8,2,6,4,7,9,1];
         let ans = mergeSort(nums);
+        expect(ans).toEqual([1,2,3,4,5,6,7,8,9,10]);
+    })
+});
+
+describe('quick sort', () => {
+    it('should sort an array correctly', () => {
+        let nums = [10,5,3,8,2,6,4,7,9,1];
+        let ans = quickSort(nums);
         expect(ans).toEqual([1,2,3,4,5,6,7,8,9,10]);
     })
 });
