@@ -152,14 +152,39 @@ const findMedian = (first, second) => {
 //Quicksort: Picks a pivot point, then sorts into two lists based on
 //whether number is greater or smaller than the pivot number. Then
 //sort those smaller lists (using another pivot?)
+//Quicksort is usually more efficient that other methods--often more
+//efficient that mergesort even-- big O of o(n log n)
+//However, in worst case scenario, it can have o(n2) if you pass quicksort
+//a sorted list.
 
 /**
  * Quick sort function
  * @param left
  * @param right
  */
-const quickSort = (left, right) => {
+const quickSort = (nums) => {
+    //base case
+    if(nums.length <= 1) {
+        return nums;
+    }
 
+    let pivot = nums.shift();
+    let left = [];
+    let right = [];
+
+    while(nums.length > 0) {
+        if(nums[0] < pivot) {
+            left.push(nums.shift());
+        }
+        else {
+            right.push(nums.shift());
+        }
+    }
+
+    let sortLeft = quickSort(left);
+    let sortRight = quickSort(right);
+
+    return sortLeft.concat(pivot, sortRight);
 }
 
 /**
