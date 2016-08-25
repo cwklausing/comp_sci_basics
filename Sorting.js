@@ -103,13 +103,29 @@ const stitch = (left, right) => {
     return results;
 };
 
+
+/**
+ * Brian proposed a challenge:
+ * Given two sorted arrays, create a function to return the median of the combined
+ * array.
+ *
+ * The solution: use a derivative of the 'stitch' algorithm, and return the middle
+ * element (or the mean of the two middle elements).
+ *
+ * @param left
+ * @param right
+ */
+const findMedian = (left, right) => {
+
+}
+
 /**
  * Jasmine Tests
  */
 
 describe('bubble sort', () => {
     it('should sort an array correctly', () => {
-        var nums = [10,5,3,8,2,6,4,7,9,1];
+        let nums = [10,5,3,8,2,6,4,7,9,1];
         bubbleSort(nums);
         expect(nums).toEqual([1,2,3,4,5,6,7,8,9,10]);
     })
@@ -117,7 +133,7 @@ describe('bubble sort', () => {
 
 describe('insertion sort', () => {
     it('should sort an array correctly', () => {
-        var nums = [10,5,3,8,2,6,4,7,9,1];
+        let nums = [10,5,3,8,2,6,4,7,9,1];
         insertionSort(nums);
         expect(nums).toEqual([1,2,3,4,5,6,7,8,9,10]);
     })
@@ -125,8 +141,20 @@ describe('insertion sort', () => {
 
 describe('merge sort', () => {
     it('should sort an array correctly', () => {
-        var nums = [10,5,3,8,2,6,4,7,9,1];
-        var ans = mergeSort(nums);
+        let nums = [10,5,3,8,2,6,4,7,9,1];
+        let ans = mergeSort(nums);
         expect(ans).toEqual([1,2,3,4,5,6,7,8,9,10]);
     })
 });
+
+describe('find median', () => {
+    it('should give the median of two sorted arrays', () => {
+        let firstArray = [1, 4, 6, 8, 9, 11];
+        let secondArray = [2, 4, 10, 12];
+        let thirdArray = [3, 5, 6, 7, 8, 13 ,14];
+        let ans = findMedian(firstArray, secondArray);
+        let ans2 = findMedian(secondArray, thirdArray);
+        expect(ans).toEqual(7);
+        expect(ans2).toEqual(6);
+    })
+})
