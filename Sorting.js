@@ -158,33 +158,30 @@ const findMedian = (first, second) => {
 //a sorted list.
 
 /**
- * Quick sort function
+ * Quick sort function--gone through first round of optimizing. This optimization
+ * also maintains the original array--making it a stable sort.
+ *
  * @param left
  * @param right
  */
 const quickSort = (nums) => {
     //base case
-    if(nums.length <= 1) {
-        return nums;
-    }
+    if(nums.length <= 1) return nums;
 
-    let pivot = nums.shift();
+    let pivot = nums[nums.length - 1];
     let left = [];
     let right = [];
 
-    while(nums.length > 0) {
-        if(nums[0] < pivot) {
-            left.push(nums.shift());
+    for(let i = 0; i < nums.length-1; i++) {
+        if(nums[i] < pivot) {
+            left.push(nums[i]);
         }
         else {
-            right.push(nums.shift());
+            right.push(nums[i]);
         }
     }
 
-    let sortLeft = quickSort(left);
-    let sortRight = quickSort(right);
-
-    return sortLeft.concat(pivot, sortRight);
+    return [...quickSort(left), pivot,...quickSort(right)];
 }
 
 /**
