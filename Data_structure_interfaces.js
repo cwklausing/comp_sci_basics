@@ -35,3 +35,14 @@
   things have different ratings and get pushed to different spots in the queue.
  */
 
+/*Moving on...
+    Implimentation!
+    Note: Javascript is a 'garbage-collected language where we don't have to worry about
+    allocation and de-allocation.
+ */
+
+/* Array List: in array list, index is descriptive of where things are that you want.
+  However, shifting elements in array lists are really hard--because if you have an array
+  of 10,000,000 values, then inserting or deleting the second one is hugely expensive. So
+  the tradeoff is getting speed (fast to find w/array list) but slow on altering list.
+ */
