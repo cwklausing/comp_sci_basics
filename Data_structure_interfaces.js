@@ -62,19 +62,25 @@ class ArrayList {
         this.data = {};
     }
     push(value) {
-
+        this.data[this.length] = value;
+        this.length++;
     }
-    pop(index) {
-
+    pop() {
+        const val = this.data[this.length - 1];
+        delete this.data[this.length - 1];
+        this.length--;
+        return val;
     }
     get(index) {
-
+        return this.data[index];
     }
     delete(index){
-
-    }
-    _collapseTo(index) {
-
+        for(let i = index; i < this.length; i++) {
+            this.data[i] = this.data[i + 1];
+            console.log(this.data[i])
+        }
+        delete this.data[this.length - 1];
+        this.length--;
     }
 }
 
