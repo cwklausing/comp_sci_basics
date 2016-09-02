@@ -108,22 +108,50 @@ class LinkedList {
     pop() {
 
     }
-    _find(value, test=this._test) {
-
+    _find(value, test=this.test) {
+      let current = this.head;
+      let i = 0;
+      while(current) {
+        if (test(value, current.value, i, current)) {
+          return current;
+        }
+        current = current.next;
+        i++
+      }
+      return null;
     }
-    _test(a, b) {
+    get(index) {
+      const node = this._find(index, this.testIndex);
+      if (!node) return null;
+      return node.value;
+    }
+    delete(index){
+      if (index === 0 ) {
+        const head = this.head;
+        if (head) {
+          this.head = head.next;
+        }
+        else {
+          this.head = null;
+        }
+        this.length--;
+        return head.value;
+      }
+
+      const node = this._find(index-1, this._testIndex);
+      const excise = node.next;
+      if (!excise) return null;
+      node.next = excise.next;
+      if (!node.next.next) this.tail = node.next;
+      this.length--;
+      return excise.value;
+    }
+    test(a, b) {
         return a === b;
     }
     testIndex(search, __, i) {
         return search === i;
     }
-    get(index) {
-
-    }
-    delete(index){
-
-    }
-
 }
 
 class Node {
@@ -133,11 +161,13 @@ class Node {
     }
 }
 
+
+
 /**
  * Jasmine Tests
  */
 
-describe('ArrayList', function() {
+xdescribe('ArrayList', function() {
     const range = length => Array.apply(null, {length: length}).map(Number.call, Number);
     const abcRange = length => range(length).map( num => String.fromCharCode( 97 + num ) );
     let list;
