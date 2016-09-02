@@ -96,7 +96,14 @@ class LinkedList {
         this.length = 0;
     }
     push(value) {
-
+      const node = new Node(value);
+      this.length++;
+      if(!this.head) {
+        this.head = node;
+      }
+      else {
+        this.tail.next = node;
+      }
     }
     pop() {
 
