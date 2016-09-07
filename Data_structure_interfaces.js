@@ -104,9 +104,10 @@ class LinkedList {
       else {
         this.tail.next = node;
       }
+      this.tail = node;
     }
     pop() {
-
+      return this.delete(this.length-1);
     }
     _find(value, test=this.test) {
       let current = this.head;
@@ -126,6 +127,7 @@ class LinkedList {
       return node.value;
     }
     delete(index){
+      console.log(index);
       if (index === 0 ) {
         const head = this.head;
         if (head) {
@@ -138,11 +140,11 @@ class LinkedList {
         return head.value;
       }
 
-      const node = this._find(index-1, this._testIndex);
+      const node = this._find(index-1, this.testIndex);
       const excise = node.next;
       if (!excise) return null;
       node.next = excise.next;
-      if (!node.next.next) this.tail = node.next;
+      if (node.next && !node.next.next) this.tail = node.next;
       this.length--;
       return excise.value;
     }
@@ -151,6 +153,16 @@ class LinkedList {
     }
     testIndex(search, __, i) {
         return search === i;
+    }
+    serialize() {
+      const ans = [];
+      let current = this.head;
+      if(!current) return ans;
+      while (current) {
+        ans.push(current.value);
+        current = current.next;
+      }
+      return ans;
     }
 }
 
