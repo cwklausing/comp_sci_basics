@@ -180,6 +180,16 @@ class Node {
  *
  * Not used in production, since if they're not randomized, it will just
  * result in a really crappy linked list.
+ *
+ * Example:
+ *
+ *       8
+ *     /   \
+ *    3    10
+ *   / \   / \
+ *  2  7  9   14
+ *    /        \
+ *   4          15
  */
 
 
