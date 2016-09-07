@@ -85,8 +85,8 @@ class ArrayList {
 }
 
 
-/*Next, linked lists!
-    Gets are really "expensive" in linked lists, but deletes are very "cheap".
+/** Next, linked lists!
+  *Gets are really "expensive" in linked lists, but deletes are very "cheap".
  */
 
 class LinkedList {
@@ -172,6 +172,16 @@ class Node {
         this.next = null;
     }
 }
+
+/**
+ * Binary Search Trees
+ * Every node of a binary search tree has either 0, 1, or two nodes.
+ * Good example--a greater than/lesser than search tree.
+ *
+ * Not used in production, since if they're not randomized, it will just
+ * result in a really crappy linked list.
+ */
+
 
 
 
